@@ -1,59 +1,96 @@
-# BookTracker
+# 📚 Angular Book Tracker
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
+An Angular app to practice **Reactive Forms** and **RxJS operators** (`combineLatest`, `debounceTime`, `distinctUntilChanged`) with the **Google Books API**. Includes add, edit, delete, and filter functionality.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Features
+
+* Search books using the **Google Books API**
+* Manage personal library (Add / Edit / Delete)
+* Reactive filters (status, search, rating)
+* Observables for form inputs + API data
+* RxJS operators: `combineLatest`, `debounceTime`, `distinctUntilChanged`
+* Optimistic updates with error handling
+
+---
+
+## 🛠️ Tech Stack
+
+* **Angular 17+** (standalone components, new template syntax `@if`, `@for`)
+* **RxJS** for reactive streams
+* **Reactive Forms** for filters & search
+* **Google Books API** as data source
+* **SCSS** for styling (ellipsis truncation, responsive design)
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+ ├─ app/
+ │   ├─ books/
+ │   │   ├─ books.component.ts
+ │   │   ├─ books.component.html
+ │   │   ├─ books.service.ts
+ │   │   └─ book.model.ts
+ │   ├─ shared/
+ │   │   └─ components/...
+ │   └─ app.component.ts
+ └─ assets/
+```
+
+---
+
+## ⚡ Quick Start
 
 ```bash
+# Clone the repo
+git clone https://github.com/your-username/angular-book-tracker.git
+cd angular-book-tracker
+
+# Install dependencies
+npm install
+
+# Run locally
 ng serve
+
+# Open in browser
+http://localhost:4200/
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🔑 Environment Setup
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Get a Google Books API key (optional for small usage):
 
-```bash
-ng generate component component-name
+```ts
+const API_URL = 'https://www.googleapis.com/books/v1/volumes?q=';
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## 📖 Usage
 
-## Building
+1. Type in the search box → triggers API calls with `debounceTime`
+2. Select filters (category, rating, status)
+3. Add, edit, or delete books from your personal list
+4. Filtered results update reactively with `combineLatest`
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## ✅ Learning Goals
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+* Practice Angular **Reactive Forms**
+* Build a mini **RxJS store** with `BehaviorSubject`
+* Combine multiple streams (`combineLatest`)
+* Handle async flows (`switchMap`, `catchError`)
+* Style with SCSS (ellipsis, responsive design)
 
-## Running unit tests
+---
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 📌 License
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+MIT © 2025 Claudio Campos

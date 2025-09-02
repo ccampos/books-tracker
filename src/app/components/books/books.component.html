@@ -1,0 +1,49 @@
+<div class="container">
+  <header>
+    <h1>Books</h1>
+    <div class="filters">
+      <form [formGroup]="filtersForm" (ngSubmit)="searchBooks()">
+        <div>
+          <label for="category">Category</label>
+          <select id="category" formControlName="category">
+            <option value="accounting">Accounting</option>
+            <option value="christianity">Christianity</option>
+            <option value="drama">Drama</option>
+            <option value="education">Education</option>
+            <option value="relationships">Relationships</option>
+          </select>
+        </div>
+        <div>
+          <label for="avg-rating">Average Rating</label>
+          <select id="avg-rating" formControlName="category">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </header>
+  <section class="books">
+    @for (book of books; track book.id) {
+    <div class="card">
+      <h3 class="title" [title]="book.volumeInfo.title">{{ book.volumeInfo.title }}</h3>
+      <div class="details">
+        @for (author of book.volumeInfo.authors; track author) {
+        <div class="author">{{ author }}</div>
+        }
+        @if (book.volumeInfo.averageRating) {
+        @if (hasHighRating(book)) {
+        <div class="average-rating high">Average Rating: {{ book.volumeInfo.averageRating }}</div>
+        } @else {
+        <div class="average-rating low">Average Rating: {{ book.volumeInfo.averageRating }}</div>
+        }
+        }
+      </div>
+    </div>
+    }
+  </section>
+</div>
