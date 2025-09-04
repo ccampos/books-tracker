@@ -2,16 +2,16 @@
   <h1>Counters Exercise</h1>
   <div>
     <label for="firstValueToSend">First Value to Send</label>
-    <input id="firstValueToSend" type="text" [(ngModel)]="firstValueToSend">
+    <input id="firstValueToSend" type="number" [(ngModel)]="firstValueToSend">
   </div>
 
   <div>
     <label for="secondValueToSend">Second Value to Send</label>
-    <input id="secondValueToSend" type="text" [(ngModel)]="secondValueToSend">
+    <input id="secondValueToSend" type="number" [(ngModel)]="secondValueToSend">
   </div>
 
   <div>
     <button (click)="handleClick()">Add</button>
   </div>
-  <div>Result: {{ result }}</div>
+  <div>Result: {{ sum$ | async }}</div>
 </div>
