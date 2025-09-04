@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, combineLatest, interval, map, Observable, of } from 'rxjs';
+import { BehaviorSubject, combineLatest, interval, of } from 'rxjs';
 
 @Component({
   selector: 'app-combine-latest-pairs',
@@ -8,13 +8,19 @@ import { BehaviorSubject, combineLatest, interval, map, Observable, of } from 'r
   styleUrl: './combine-latest-pairs.component.scss'
 })
 export class CombineLatestPairsComponent implements OnInit {
-  clock$ = interval(1000);
-  extra$ = new BehaviorSubject(0);
+  ticker$ = interval(2000);
+  colors = ['red', 'yellow', 'green'];
+  buttonSubject$ = new BehaviorSubject<boolean>(false);
 
   ngOnInit(): void {
-    combineLatest([this.clock$, this.extra$])
-      .subscribe(([time, extra]) => console.log('total', time + extra));
+    combineLatest([this.ticker$, this.buttonSubject$])
+      .subscribe(([ticker, button]) => {
+        const index = ticker % this.colors.length;
+        console.log('ticker + index + trafficLight + button: ', ticker, index, button, this.colors[index]);
+      });
+  }
 
-      this.extra$.next(100);
+  handleClick(bool: boolean): void {
+    this.buttonSubject$.next(bool);
   }
 }
